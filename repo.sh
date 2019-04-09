@@ -30,7 +30,7 @@ repos=(
     "https://github.com/edx/ecommerce.git"
     "https://github.com/edx/edx-e2e-tests.git"
     "https://github.com/edx/edx-notes-api.git"
-    "https://github.com/edx/edx-platform.git"
+    "https://github.com/CredoEducation/edx-platform.git"
     "https://github.com/edx/xqueue.git"
     "https://github.com/edx/edx-analytics-pipeline.git"
     "https://github.com/edx/gradebook.git"
@@ -108,7 +108,7 @@ _checkout_and_update_branch ()
         git fetch origin ${OPENEDX_GIT_BRANCH}:${OPENEDX_GIT_BRANCH}
         git checkout ${OPENEDX_GIT_BRANCH}
     fi
-    find . -name '*.pyc' -not -path './.git/*' -delete 
+    find . -name '*.pyc' -not -path './.git/*' -delete
 }
 
 clone ()
