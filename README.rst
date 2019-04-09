@@ -98,7 +98,7 @@ a minimum of 2 CPUs and 6GB of memory works well.
 
    You may customize where the local repositories are found by setting the
    DEVSTACK\_WORKSPACE environment variable.
-   
+
    Be sure to share the cloned directories in the Docker -> Preferences... ->
    File Sharing box.
 
@@ -253,11 +253,11 @@ analyticstack ( e.g. lms, studio etc ) consider setting higher memory.
    .. code:: sh
 
      make analytics-pipeline-shell
-    
+
    - To see logs from containers running in detached mode, you can either use
      "Kitematic" (available from the "Docker for Mac" menu), or by running the
      following command:
-    
+
       .. code:: sh
 
         make logs
@@ -268,9 +268,9 @@ analyticstack ( e.g. lms, studio etc ) consider setting higher memory.
       .. code:: sh
 
         make namenode-logs
-    
+
    - To reset your environment and start provisioning from scratch, you can run:
-    
+
       .. code:: sh
 
         make destroy
@@ -278,9 +278,9 @@ analyticstack ( e.g. lms, studio etc ) consider setting higher memory.
      **NOTE:** Be warned! This will remove all the containers and volumes
      initiated by this repository and all the data ( in these docker containers )
      will be lost.
-    
+
    - For information on all the available ``make`` commands, you can run:
-    
+
       .. code:: sh
 
         make help
@@ -475,7 +475,7 @@ To access a MySQL or Mongo shell, run the following commands, respectively:
    mysql
 
 .. code:: sh
-    
+
    make mongo-shell
    mongo
 
@@ -665,7 +665,7 @@ or a manual Docker command to bring down the container:
 
 .. code:: sh
 
-   docker kill $(docker ps -a -q --filter="name=edx.devstack.<container name>")
+   docker kill $(docker ps -a -q --filter="name=edx.devstack.ironwood.<container name>")
 
 Running LMS and Studio Tests
 ----------------------------
@@ -709,7 +709,7 @@ logged at container startup, and can be found by running ``make vnc-passwords``.
 
 Most tests are run in Firefox by default.  To use Chrome for tests that normally
 use Firefox instead, prefix the test command with
-``SELENIUM_BROWSER=chrome SELENIUM_HOST=edx.devstack.chrome``.
+``SELENIUM_BROWSER=chrome SELENIUM_HOST=edx.devstack.ironwood.chrome``.
 
 Running End-to-End Tests
 ------------------------

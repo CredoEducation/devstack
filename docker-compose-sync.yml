@@ -1,33 +1,37 @@
 version: "2.1"
 
 services:
-  credentials:
-    volumes:
-      - credentials-sync:/edx/app/credentials/credentials:nocopy
-  discovery:
-    volumes:
-      - discovery-sync:/edx/app/discovery/discovery:nocopy
-  ecommerce:
-    volumes:
-      - ecommerce-sync:/edx/app/ecommerce/ecommerce:nocopy
+#  credentials:
+#    volumes:
+#      - credentials-sync:/edx/app/credentials/credentials:nocopy
+#  discovery:
+#    volumes:
+#      - discovery-sync:/edx/app/discovery/discovery:nocopy
+#  ecommerce:
+#    volumes:
+#      - ecommerce-sync:/edx/app/ecommerce/ecommerce:nocopy
   lms:
     volumes:
-      - edxapp-sync:/edx/app/edxapp/edx-platform:nocopy
+      - edxapp-ironwood-sync:/edx/app/edxapp/edx-platform:nocopy
+      - edxapp-src-ironwood-sync:/edx/src:nocopy
   studio:
     volumes:
-      - edxapp-sync:/edx/app/edxapp/edx-platform:nocopy
-  forum:
-    volumes:
-      - forum-sync:/edx/app/forum/cs_comments_service:nocopy
+      - edxapp-ironwood-sync:/edx/app/edxapp/edx-platform:nocopy
+      - edxapp-src-ironwood-sync:/edx/src:nocopy
+#  forum:
+#    volumes:
+#      - forum-sync:/edx/app/forum/cs_comments_service:nocopy
 
 volumes:
-  credentials-sync:
+#  credentials-sync:
+#    external: true
+#  discovery-sync:
+#    external: true
+#  ecommerce-sync:
+#    external: true
+  edxapp-ironwood-sync:
     external: true
-  discovery-sync:
+  edxapp-src-ironwood-sync:
     external: true
-  ecommerce-sync:
-    external: true
-  edxapp-sync:
-    external: true
-  forum-sync:
-    external: true
+#  forum-sync:
+#    external: true
