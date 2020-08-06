@@ -67,14 +67,18 @@ FS_SYNC_STRATEGY ?= local-mounts
 # TODO: Re-evaluate this list and consider paring it down to a tighter core.
 #       The current value was chosen such that it would not change the existing
 #       Devstack behavior.
+#DEFAULT_SERVICES ?= \
+#credentials+discovery+ecommerce+edx_notes_api+forum+frontend-app-publisher+frontend-app-learning+gradebook+lms+studio
 DEFAULT_SERVICES ?= \
-credentials+discovery+ecommerce+edx_notes_api+forum+frontend-app-publisher+frontend-app-learning+gradebook+lms+studio
+frontend-app-learning+gradebook+registrar+registrar-worker+lms+studio
 
 # All edX services, whether or not they are run by default.
 # Separated by plus signs.
 # Separated by plus signs. Listed in alphabetical order for clarity.
+#EDX_SERVICES ?= \
+#analyticspipeline+credentials+discovery+ecommerce+edx_notes_api+forum+frontend-app-learning+frontend-app-publisher+gradebook+lms+lms_watcher+marketing+program-console+registrar+registrar-worker+studio+studio_watcher+xqueue+xqueue_consumer
 EDX_SERVICES ?= \
-analyticspipeline+credentials+discovery+ecommerce+edx_notes_api+forum+frontend-app-learning+frontend-app-publisher+gradebook+lms+lms_watcher+marketing+program-console+registrar+registrar-worker+studio+studio_watcher+xqueue+xqueue_consumer
+frontend-app-learning+frontend-app-publisher+gradebook+lms+lms_watcher+registrar+registrar-worker+studio+studio_watcher+xqueue+xqueue_consumer
 
 # Services with database migrations.
 # Should be a subset of $(EDX_SERVICES).
@@ -82,8 +86,10 @@ analyticspipeline+credentials+discovery+ecommerce+edx_notes_api+forum+frontend-a
 # Services must provide a Makefile target named: $(service)-update-db
 # Note: This list should contain _all_ db-backed services, even if not
 # configured to run; the list will be filtered later against $(DEFAULT_SERVICES).
+#DB_SERVICES ?= \
+#credentials+discovery+ecommerce+lms+registrar+studio
 DB_SERVICES ?= \
-credentials+discovery+ecommerce+lms+registrar+studio
+lms+registrar+studio
 
 # Services with static assets to be built.
 # Should be a subset of $(EDX_SERVICES).
@@ -91,10 +97,14 @@ credentials+discovery+ecommerce+lms+registrar+studio
 # Separated by plus signs. Listed in alphabetical order for clarity.
 # Note: This list should contain _all_ services with static asse to compile ts, even if not
 # configured to run; the list will be filtered later against $(DEFAULT_SERVICES).
+#ASSET_SERVICES ?= \
+#credentials+discovery+ecommerce+lms+registrar+studio
 ASSET_SERVICES ?= \
-credentials+discovery+ecommerce+lms+registrar+studio
+lms+registrar+studio
 
 # All third-party services.
 # Separated by plus signs. Listed in alphabetical order for clarity.
+#THIRD_PARTY_SERVICES ?= \
+#chrome+devpi+elasticsearch+elasticsearch-5+firefox+memcached+mongo+mysql+mysql57+redis+namenode+datanode+resourcemanager+nodemanager+sparkmaster+sparkworker+vertica
 THIRD_PARTY_SERVICES ?= \
-chrome+devpi+elasticsearch+elasticsearch-5+firefox+memcached+mongo+mysql+mysql57+redis+namenode+datanode+resourcemanager+nodemanager+sparkmaster+sparkworker+vertica
+devpi+elasticsearch+elasticsearch-5+memcached+mongo+mysql+mysql57+redis

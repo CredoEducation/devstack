@@ -24,7 +24,7 @@ syncs:
     src: '../ecommerce/'
     sync_excludes: [ '.git', '.idea', 'node_modules', 'assets', 'ecommerce/static/bower_components', 'ecommerce/static/build' ]
 
-  edxapp-sync:
+  edxapp-juniper-sync:
     host_disk_mount_mode: 'cached'
     src: '../edx-platform/'
     sync_excludes: [ '.git', '.idea', 'node_modules', '.prereqs_cache' ]

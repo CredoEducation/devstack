@@ -1,12 +1,12 @@
 version: "2.1"
 
 services:
-  discovery:
-      volumes:
-      - themes-nfs:/edx/app/edx-themes:cached
-  ecommerce:
-      volumes:
-      - themes-nfs:/edx/app/edx-themes:cached
+#  discovery:
+#      volumes:
+#      - themes-nfs:/edx/app/edx-themes:cached
+#  ecommerce:
+#      volumes:
+#      - themes-nfs:/edx/app/edx-themes:cached
   lms:
       volumes:
       - themes-nfs:/edx/app/edx-themes:cached

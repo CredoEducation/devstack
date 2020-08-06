@@ -60,7 +60,7 @@
         dev.up.with-watchers dev.validate e2e-tests e2e-tests.with-shell \
         feature-toggle-state help requirements selfcheck upgrade upgrade \
         up-marketing-sync validate-lms-volume vnc-passwords
-        
+
 # Load up options (configurable through options.local.mk).
 include options.mk
 
@@ -94,7 +94,6 @@ endif
 # Files for use with Docker Sync.
 ifeq ($(FS_SYNC_STRATEGY),docker-sync)
 COMPOSE_FILE := docker-compose-sync.yml
-COMPOSE_FILE := docker-sync-marketing-site.yml
 endif
 
 ifndef COMPOSE_FILE
@@ -121,6 +120,7 @@ ALL_SERVICES_LIST := $(subst +, ,$(ALL_SERVICES))
 
 # Get information on host operating system via the `uname` command.
 OS := $(shell uname)
+OPENEDX_RELEASE := juniper.master
 
 # Need to run some things under winpty in a Windows git-bash shell
 # (but not when calling bash from a command shell or PowerShell).
@@ -217,8 +217,8 @@ dev.provision: dev.check-memory ## Provision dev environment with default servic
 	# e2e is not part of `DEFAULT_SERVICES` because it isn't a service;
 	# it's just a way to tell ./provision.sh that the fake data for end-to-end
 	# tests should be prepared.
-	$(WINPTY) bash ./provision.sh $(DEFAULT_SERVICES)+e2e
-	make dev.stop	
+	$(WINPTY) bash ./provision.sh $(DEFAULT_SERVICES)
+	make dev.stop
 
 dev.provision.%: ## Provision specified services.
 	echo $*
@@ -381,6 +381,12 @@ dev.logs: ## View logs from running containers.
 
 dev.logs.%: ## View the logs of the specified service container.
 	docker-compose logs -f --tail=500 $*
+
+lms.logs:
+	docker logs -f edx.devstack.lms
+
+studio.logs:
+	docker logs -f edx.devstack.studio
 
 dev.attach: _expects-service.dev.attach
 
